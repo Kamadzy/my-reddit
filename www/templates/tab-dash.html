@@ -1,8 +1,15 @@
 <ion-view view-title="My Reddit">
   <ion-content class="padding">
-    <h3 ng-repeat="story in stories">
-      <a href="{{story.url}}" target="_blank"> {{story.title}}</a> - {{story.domain}}
-    </h3>
-
+   <div class="list">
+     <a class="item item-thumbnail-left"
+        href="{{story.url}}" target="_blank"
+        ng-repeat="story in stories">
+       <img ng-src="{{story.thumbnail}}" ng-if="story.thumbnail.indexOf('http') === 0">
+      <h2 class="story-title"> {{story.title}}</h2>
+      <p>
+        <span am-time-ago="story.created_utc | amFromUnix"></span>
+        {{story.domain}}</p>
+    </a>
+   </div>
   </ion-content>
 </ion-view>
